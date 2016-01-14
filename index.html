@@ -85,14 +85,14 @@
 		function submitTest(){
 
 			if(!$('#str1_input').val() == "" || !$('#str2_input').val() == "" ){
-				$('#result_answer').text = "Be sure to enter values for both strings :)"
+				$('#result_answer').text("Be sure to enter values for both strings :)");
 			}
 
 			var str1 = $('#str1_input').val();
 			var str2 = $('#str2_input').val();
 
 			var res = strTest(str1, str2);
-			$('#result_answer').text = "Your answer is: " + res;
+			$('#result_answer').text("Your answer is: " + res);
 		};
 
 		function strTest(str1, str2){
@@ -103,7 +103,7 @@
 			for (var x=0; x<=str1.length; x++){
 				res = res + str1[x] * str2[y];
 				y++;
-				if(y > str2.length) y = 0;
+				if(y > (str2.length - 1)) y = 0;
 			}
 		};
 
