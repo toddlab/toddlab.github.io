@@ -85,10 +85,10 @@
 		var str2 = $('#str2_input').val();
 
 		if(str1 == "" || str2 == "" ){
-			$('#result_answer').text = "Be sure to enter values for both strings :)"
+			$('#result_answer').text("Be sure to enter values for both strings :)");
 		}
 		var res = strTest(str1, str2);
-		$('#result_answer').text = "Your answer is: " + res;
+		$('#result_answer').text("Your answer is: " + res);
 		};
 
 		function strTest(str1, str2){
