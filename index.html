@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="https://github.com/toddlab/toddlab.github.io.git/_resources/css/main_css.css"> 
+		//<link rel="stylesheet" type="text/css" href="https://github.com/toddlab/toddlab.github.io.git/_resources/css/main_css.css"> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="https://github.com/toddlab/toddlab.github.io.git/_resources/js/main_js.js"></script>
+		//<script src="https://github.com/toddlab/toddlab.github.io.git/_resources/js/main_js.js"></script>
 	</head>
 	<body>
 		<div id="devTestWrapper">
 			<div id="args">
 				<div class="strWrapper">
-					String 1: </br>
+					String 1:  
 					<input type="text" name="str2" id="str1_input">
 				</div>
 				<div class="strWrapper">
-					String 2: </br>
+					String 2:  
 					<input type="text" name="str2" id="str2_input">
 				</div>
 				<input type="button" onclick="submitTest" value="Submit" id="submitTest_button">
@@ -88,7 +88,7 @@
 			$('#result_answer').text("Be sure to enter values for both strings :)");
 		}
 		var res = strTest(str1, str2);
-		$('#result_answer').text("Your answer is: " + res);
+			$('#result_answer').text("Your answer is: " + res);
 		};
 
 		function strTest(str1, str2){
