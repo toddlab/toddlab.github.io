@@ -1,38 +1,30 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="https://www.inmoment.com/websurvey/servlet/BlobServlet?sid=14706025-3b3e-4046-a66b-49e2347a30a5&type=0&tag=pc"> 
+		<link rel="stylesheet" type="text/css" href="_resources/css/main_css.css"> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="_resources/js/main_js.js"></script>
 	</head>
 	<body>
-		<div id="AL_Proto">
-			<div id="sMWrapper" >
-				<div id="meter">
-					<div id="ms1" class="msc8"></div>
-					<div id="ms2" class="msc8"></div>
-					<div id="msg"></div>
-					<div id="ms3" class="msc8"></div>
-					<div id="ms4" class="msc8"></div>
-					<div id="ms5" class="msc8"></div>
-					<div id="ms6" class="msc8"></div>
-					<div id="ms7" class="msc8"></div>
-					<div id="ms8" class="msc8"></div>
-					<div id="sMA"></div>
+		<div id="devTestWrapper">
+			<div id="args">
+				<div class="strWrapper">
+					String 1: </br>
+					<input type="text" name="str2" id="str1_input">
 				</div>
-				<div id="sMLabel">Detail Strength</div>
+				<div class="strWrapper">
+					String 2: </br>
+					<input type="text" name="str2" id="str2_input">
+				</div>
+				<input type="button" onclick="submitTest" value="Submit" id="submitTest_button">
 			</div>
-			<div id="cAWrapper" >
-				<textarea id="commentArea" rows="9"></textarea>
-			</div>	
-			<div id="topicBarWrapper" >
-				<div id="topicBarItem1" class="topics"><img src=""></div>
-				<div id="topicBarItem2" class="topics"><img src=""></div>
-				<div id="topicBarItem3" class="topics"><img src=""></div>
-				<div id="topicBarItem4" class="topics"><img src=""></div>
-				<div id="topicBarItem5" class="topics"><img src=""></div>
-				<span class="stretch"></span>				
+			<div id="result">
+				<div id="result_icon">
+				</div>
+				<div id="result_answer">
+				</div>
 			</div>
 		</div>
-		<script src="https://www.inmoment.com/report/servlet/BlobServlet?sid=9e7189a7-742d-110a-80c3-b23955a64fea&type=0&tag=wilkobutton"></script>
 	</body>	
 
 </html>
