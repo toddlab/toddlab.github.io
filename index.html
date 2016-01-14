@@ -39,6 +39,7 @@
 		    font-size: 1.2em;
 		    margin: auto;
 		    padding: 10px;
+		    max-width: 500px;
 		}
 
 		#args {
@@ -48,28 +49,29 @@
 			padding: 5;
 		}
 		#submitTest_button {
+			margin-top: 15px;
 			display: inline-block;
-		    padding: 6px 12px;
-		    margin-bottom: 0;
-		    font-size: 14px;
-		    font-weight: normal;
-		    line-height: 1.428571429;
-		    text-align: center;
-		    white-space: nowrap;
-		    vertical-align: middle;
-		    cursor: pointer;
-		    -webkit-user-select: none;
-		    -moz-user-select: none;
-		    -ms-user-select: none;
-		    -o-user-select: none;
-		    user-select: none;
-		    background-image: none;
-		    border: 1px solid transparent;
-		    border-radius: 4px;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 14px;
+			font-weight: normal;
+			line-height: 1.428571429;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
 		}
 
 		#result{
-
+			margin-top: 20px;
 		}
 		#result_icon{
 			background-image:;
@@ -81,18 +83,32 @@
 
 	<script>
 		function submitTest(){
-		var str1 = $('#str1_input').val();
-		var str2 = $('#str2_input').val();
 
-		if(str1 == "" || str2 == "" ){
-			$('#result_answer').text("Be sure to enter values for both strings :)");
-		}
-		var res = strTest(str1, str2);
-			$('#result_answer').text("Your answer is: " + res);
+			if(!$('#str1_input').val() == "" || !$('#str2_input').val() == "" ){
+				$('#result_answer').text = "Be sure to enter values for both strings :)"
+			}
+
+			var str1 = $('#str1_input').val();
+			var str2 = $('#str2_input').val();
+
+			var res = strTest(str1, str2);
+			$('#result_answer').text = "Your answer is: " + res;
 		};
 
 		function strTest(str1, str2){
-			return str1 + str2;
+			str1 = splitString(str1);
+			str2 = splitString(str2);
+			var res = 0;
+			var y = 0;
+			for (var x==0; x<=str1.length; x++){
+				res = res + str1[x] * str2[y];
+				y++;
+				if(y > str2.length) y = 0;
+			}
+		};
+
+		function splitString(inp){
+			return inp.split(',');
 		};
 	</script>
 
