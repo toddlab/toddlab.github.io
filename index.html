@@ -1,116 +1,26 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- <link rel="stylesheet" type="text/css" href="https://github.com/toddlab/toddlab.github.io.git/_resources/css/main_css.css">  --> 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<!-- <script src="https://github.com/toddlab/toddlab.github.io.git/_resources/js/main_js.js"></script> -->
-	</head>
-	<body>
-		<div id="devTestWrapper">
-			<div id="args">
-				<div class="strWrapper">
-					String 1:  
-					<input type="text" name="str2" id="str1_input">
-				</div>
-				<div class="strWrapper">
-					String 2:  
-					<input type="text" name="str2" id="str2_input">
-				</div>
-				<input type="button" onclick="submitTest()" value="Submit" id="submitTest_button">
-			</div>
-			<div id="result">
-				<div id="result_icon">
-				</div>
-				<div id="result_answer">
-				</div>
-			</div>
-		</div>
-	</body>	
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
 
+<canvas id="myCanvas" width="480" height="320"></canvas>
 
-	<style>
-		body {
-		    background-color: #fff;
-		    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-		}
+<script>
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.rect(20, 40, 50, 50);
+	ctx.fillStyle = "#FF0000";
+	ctx.fill();
+	ctx.closePath();
+</script>
 
-		#devTestWrapper {
-		    text-align: center;
-		    font-size: 1.2em;
-		    margin: auto;
-		    padding: 10px;
-		    max-width: 500px;
-		}
-
-		#args {
-			text-align: center;
-		}
-		.strWrapper{
-			padding: 5;
-		}
-		#submitTest_button {
-			margin-top: 15px;
-			display: inline-block;
-			padding: 6px 12px;
-			margin-bottom: 0;
-			font-size: 14px;
-			font-weight: normal;
-			line-height: 1.428571429;
-			text-align: center;
-			white-space: nowrap;
-			vertical-align: middle;
-			cursor: pointer;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			-o-user-select: none;
-			user-select: none;
-			background-image: none;
-			border: 1px solid transparent;
-			border-radius: 4px;
-		}
-
-		#result{
-			margin-top: 20px;
-		}
-		#result_icon{
-			background-image:;
-		}
-		#result_answer{
-
-		}	
-	</style>
-
-	<script>
-		function submitTest(){
-
-			if(!$('#str1_input').val() == "" || !$('#str2_input').val() == "" ){
-				$('#result_answer').text("Be sure to enter values for both strings :)");
-			}
-
-			var str1 = $('#str1_input').val();
-			var str2 = $('#str2_input').val();
-
-			var res = strTest(str1, str2);
-			$('#result_answer').text("Your answer is: " + res);
-		};
-
-		function strTest(str1, str2){
-			str1 = splitString(str1);
-			str2 = splitString(str2);
-			var res = 0;
-			var y = 0;
-			for (var x=0; x<str1.length; x++){
-				res = res + str1[x] * str2[y];
-				y++;
-				if(y > (str2.length - 1)) y = 0;
-			}
-			return res;
-		};
-
-		function splitString(inp){
-			return inp.split(',');
-		};
-	</script>
-
+</body>
 </html>
