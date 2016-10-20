@@ -1,12 +1,12 @@
-breakoutCanvas { 
+#breakoutCanvas { 
   background: #eee; 
 }
-gameImage {
+.gameImage {
   max-width: 250px;
   width: 100%;
   height: auto;
 }
-game {
+.game {
   width: 400px;
   height: 400px;
   padding: 10px;
