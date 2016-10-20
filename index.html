@@ -10,49 +10,17 @@
 </head>
 <body>
 	<div id="gameSelection" class="gameWrapper">
-		<div id="breakout" class="game">
+		<div id="breakout" class="game" onclick="location.href='/Games/Breakout.html';">
 			<div class="gameTitle">
 				Breakout
 			</div>
 			<div class="gameDescription">
 			</div>
 			<div class="gameImage">
-				
+				<img src="https://upload.wikimedia.org/wikipedia/en/7/7a/BreakOut_arcadeflyer.png">
 			</div>
 		</div>
 	</div>
-	
-	
-<canvas id="myCanvas" width="480" height="320"></canvas>
-
-<script>
-	// Canvas for game
-	var canvas = document.getElementById("myCanvas");
-	var ctx = canvas.getContext("2d");
-	
-	// Tile
-	ctx.beginPath();
-	ctx.rect(20, 40, 50, 50);
-	ctx.fillStyle = "#FF0000";
-	ctx.fill();
-	ctx.closePath();
-	
-	// Ball
-	ctx.beginPath();
-	ctx.arc(240, 160, 20, 0, Math.PI*2, false);
-	ctx.fillStyle = "green";
-	ctx.fill();
-	ctx.closePath();
-	
-	// Empty tile
-	ctx.beginPath();
-	ctx.rect(160, 10, 100, 40);
-	ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
-	ctx.stroke();
-	ctx.closePath();
-	
-	
-</script>
 
 </body>
 </html>
