@@ -1,1 +1,14 @@
-canvas { background: #eee; }
+canvas { 
+  background: #eee; 
+}
+gameImage {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+game {
+  width: 400px;
+  height: 400px;
+  padding: 10px;
+  margin: auto;
+}
