@@ -1,11 +1,16 @@
-.gameImage {
-  max-width: 250px;
-  width: 100%;
-  height: auto;
-}
 .game {
   width: 400px;
   height: 400px;
   padding: 10px;
   margin: auto;
+}
+
+.gameImage {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+}
+
+.gameImage img {
+  max-width:100%;
 }
