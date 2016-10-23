@@ -1,12 +1,16 @@
 .weapons {
   margin: auto;
   text-align: center;
+  width: 95%;
+  padding: 5px;
 }
 
 .weaponWrapper {
-  padding: 10px;
-  height: 300px;
-  width: 300px;
+    padding: 10px;
+    height: 250px;
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .weaponTitle {
@@ -18,6 +22,7 @@
 .weaponPic {
   max-width: 200px;
   text-align: center;
+  margin: auto;
 }
 
 .weaponPic img {
