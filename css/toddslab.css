@@ -5,6 +5,7 @@
   margin: auto;
   cursor: pointer;
   text-align: center;
+  display: inline-block;
 }
 
 .gameImage {
