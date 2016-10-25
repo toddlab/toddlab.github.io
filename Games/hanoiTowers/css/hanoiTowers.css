@@ -28,6 +28,6 @@
 .pegBase {
     margin: auto;
     width: 100%;
-    height: 30px;
-    background: #000;
+    height: 35px;
+    background-image: url('http://paper-backgrounds.com/textureimages/2012/12/brown-wood-texture-background-hd.jpg');
 }
