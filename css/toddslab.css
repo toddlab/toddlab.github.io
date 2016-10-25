@@ -25,6 +25,15 @@
   margin: auto;
 }
 
+.gameImage:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
 .gameImage img {
   max-width:100%;
+  display: inline-block;
+  vertical-align: middle; 
 }
