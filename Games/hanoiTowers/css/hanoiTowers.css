@@ -10,6 +10,7 @@
 	border: 3px solid #000;
 	display: flex;
 	padding: 10px;
+	margin-top: 50px;
 }
 
 .pegWrapper {
@@ -23,13 +24,17 @@
 	height: 300px;
 	width: 30px;
 	margin: auto;
+    	background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS5oRjPjDxj58za7QwMyb9Ykn5e5DivkFlVMK_ZoKV1fhNDwR01);
+    	border-top-left-radius: 5px;
+    	border-top-right-radius: 5px;
+    	background-size: cover;
 }
 
 .pegBase {
 	margin: auto;
 	width: 100%;
 	height: 35px;
-	background-image: url('https://media.freestocktextures.com/cache/74/ed/74eddb85476a60a87706359ad64d7a2d.jpg');
+	background-image: url('https://s-media-cache-ak0.pinimg.com/originals/6b/5f/a8/6b5fa8323dd4e1f0ae585cfd867a4053.jpg');
 }
 
 #pegBaseLeft {
