@@ -22,10 +22,8 @@
 }
 
 .pegWrapper {
-	width: 100%;
-	min-height: 350px;
-	max-height: 500px;
 	flex: 1 auto;
+	padding-top: 30px;
 }
 
 .pegWrapperLeft {
