@@ -11,11 +11,11 @@
 }
 
 .row{
-    flex: 1 auto;
+    flex: 1 100%;
 }
 
 .column{
-
+    flex: 1 auto;
 }
 
 #hanoiTowersWrapper {
@@ -35,12 +35,13 @@
 
 .pegWrapper {
 	padding-top: 30px;
+    display: flex;
 }
 
 
 .peg {
 	height: 300px;
-	width: 30px;
+	max-width: 30px;
 	margin: auto;
 	background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS5oRjPjDxj58za7QwMyb9Ykn5e5DivkFlVMK_ZoKV1fhNDwR01);
 	border-top-left-radius: 5px;
