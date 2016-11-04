@@ -17,7 +17,7 @@ function createCSS(newCss) {
 
 function initiate(){
 	$( "#discSubmit" ).click(function() {
- 		$( this ).discSubmit($("#numDiscs").val());
+ 		discSubmit($("#numDiscs").val());
 	});
 	for (a = 0; a < numDiscs; a++) {
 		discs[a] = new createDiscs(a);
