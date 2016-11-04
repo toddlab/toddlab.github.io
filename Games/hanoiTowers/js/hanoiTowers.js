@@ -15,10 +15,8 @@ function createCSS(newCss) {
 	document.getElementById('someElementId').className = 'cssClass';
 }
 
-function initiate(){
-	$( "#discSubmit" ).click(function() {
- 		discSubmit($("#numDiscs").val());
-	});
+function initiateGame(){
+	discs.length = 0;
 	for (a = 0; a < numDiscs; a++) {
 		discs[a] = new createDiscs(a);
 	}
@@ -26,4 +24,12 @@ function initiate(){
 
 function discSubmit(inp) {
 	numDiscs = inp;
+	initiateGame();
+}
+
+function loadPage() {
+	$( "#discSubmit" ).click(function() {
+		discSubmit($("#numDiscs").val());
+	});
+	initiateGame();
 }
