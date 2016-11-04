@@ -20,7 +20,7 @@ function initiate(){
  		$( this ).discSubmit($("#numDiscs").val());
 	});
 	for (a = 0; a < numDiscs; a++) {
-		var disc[a] = new createDiscs(a);
+		var discs[a] = new createDiscs(a);
 	}
 }
 
