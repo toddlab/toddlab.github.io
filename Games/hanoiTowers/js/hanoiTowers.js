@@ -1,5 +1,5 @@
 var numDiscs = 5;
-var discs[];
+var discs = [];
 
 function createDiscs (id) {
 	this.width = "";
