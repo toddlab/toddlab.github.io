@@ -1,6 +1,7 @@
-var numDiscs = 0;
+var numDiscs = 5;
+var discs[];
 
-function disc (id) {
+function createDiscs (id) {
 	this.width = "";
 	this.peg = "left";
 	this.id = id || "";
@@ -14,13 +15,15 @@ function createCSS(newCss) {
 	document.getElementById('someElementId').className = 'cssClass';
 }
 
-function askForNumDiscs() {
-	numDiscs = prompt("How many discs do you want?", "0");
+function initiate(){
+	$( "#discSubmit" ).click(function() {
+ 		$( this ).discSubmit($("#numDiscs").val());
+	});
+	for (a = 0; a < numDiscs; a++) {
+		var disc[a] = new createDiscs(a);
+	}
 }
 
-function initiate(){
-	askForNumDiscs();
-	for (a = 0; a < numDiscs; a++) {
-		disc(a);
-	}
+function discSubmit(inp) {
+	numDiscs = inp;
 }
