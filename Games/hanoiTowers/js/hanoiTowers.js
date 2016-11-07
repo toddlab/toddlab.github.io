@@ -1,10 +1,11 @@
 var numDiscs = 5;
 var discs = [];
 
-function createDiscs (id) {
-	this.width = "";
+function createDiscs (id, width) {
+	this.width = width || "";
 	this.peg = "left";
 	this.id = id || "";
+	this.top = "";
 }
 
 function createCSS(newCss) {
@@ -17,10 +18,22 @@ function createCSS(newCss) {
 
 function initiateGame(){
 	discs.length = 0;
-	for (a = 0; a < numDiscs; a++) {
-		discs[a] = new createDiscs(a);
+	var discWidth = $( "#pegLeft" ).width() * .95;
+	var discWidthDif = discWidth / numDiscs;
+	for (a = 1; a < (numDiscs+1); a++) {
+		discs[a] = new createDiscs(a, discWidth);
+		$( "<div/>", {
+  			"class": ".disc",
+ 			"id": "peg"+a,
+			}).appendTo( "#pegLeft" );
+		discWidth = discWidth - discWidthDif;
 	}
 }
+
+function animateCreateDisc(id) {
+
+}
+
 
 function discSubmit(inp) {
 	numDiscs = inp;
@@ -29,7 +42,15 @@ function discSubmit(inp) {
 
 function loadPage() {
 	$( "#discSubmit" ).click(function() {
-		discSubmit($("#numDiscs").val());
+		discSubmit($( "#numDiscs" ).val());
 	});
 	initiateGame();
+}
+
+function moveDisc() {
+
+}
+
+function checkWinner(){
+
 }
