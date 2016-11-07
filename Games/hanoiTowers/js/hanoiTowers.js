@@ -38,6 +38,7 @@ function animateCreateDisc(id) {
 
 
 function discSubmit(inp) {
+	$( ".disc" ).remove();
 	numDiscs = inp;
 	initiateGame();
 }
