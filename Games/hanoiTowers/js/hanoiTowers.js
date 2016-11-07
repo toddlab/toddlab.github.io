@@ -23,7 +23,7 @@ function initiateGame(){
 	for (a = 1; a < (numDiscs+1); a++) {
 		discs[a] = new createDiscs(a, discWidth);
 		$( "<div/>", {
-  			"class": ".disc",
+  			"class": "disc",
  			"id": "peg"+a,
 			}).appendTo( "#pegLeft" );
 		discWidth = discWidth - discWidthDif;
