@@ -18,7 +18,7 @@ function createCSS(newCss) {
 
 function initiateGame(){
 	discs.length = 0;
-	var discWidth = $( "#pegLeft" ).outerWidth() * .95;
+	var discWidth = $( "#pegLeft" ).outerWidth(true) * .95;
 	var discWidthDif = discWidth / numDiscs;
 	for (a = 1; a < (numDiscs+1); a++) {
 		discs[a] = new createDiscs(a, discWidth);
@@ -47,6 +47,7 @@ function loadPage() {
 	$( "#discSubmit" ).click(function() {
 		discSubmit($( "#numDiscs" ).val());
 	});
+	initiateGame();
 }
 
 function moveDisc() {
