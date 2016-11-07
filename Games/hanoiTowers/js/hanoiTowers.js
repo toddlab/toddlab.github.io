@@ -25,7 +25,9 @@ function initiateGame(){
 		$( "<div/>", {
   			"class": "disc",
  			"id": "peg"+a,
-			}).appendTo( "#pegLeft" );
+		}).css({
+			"width" : discs[a].width+"px",
+		}).appendTo( "#pegLeft" );
 		discWidth = discWidth - discWidthDif;
 	}
 }
