@@ -2,7 +2,7 @@ var numDiscs = 5;
 var discs = [];
 var discHeight = 0;
 var discPos = [];
-var pegHeight = $("#pegLeft").position().top + $("#pegLeft").offset().top + $("#pegLeft").outerHeight(t‌​rue);
+var pegHeight = $("#pegLeft").position().top + $("#pegLeft").offset().top + $("#pegLeft").outerHeight();
 
 function createDiscs (id, width) {
 	this.width = width || "";
