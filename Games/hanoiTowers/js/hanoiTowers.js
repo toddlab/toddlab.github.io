@@ -1,5 +1,7 @@
 var numDiscs = 5;
 var discs = [];
+var discHeight = ;
+var discPos = [];
 
 function createDiscs (id, width) {
 	this.width = width || "";
@@ -27,8 +29,18 @@ function initiateGame(){
  			"id": "peg"+a,
 		}).css({
 			"width" : discs[a].width+"px",
+			"height" : discHeight+"px",
 		}).appendTo( "#pegLeft" );
 		discWidth = discWidth - discWidthDif;
+	}
+}
+
+function determineDefaultDiscPositions(num) {
+	discHeight = (($("#pegLeft").position().top + $("#pegLeft").offset().top + $("#pegLeft").outerHeight(t‌​rue))/numDiscs)*90;
+	var discPosDif = 0;
+	for (a = 1; a < (num+1); a++) {
+		discPos[a] = $("#pegLeft").position().top + $("#pegLeft").offset().top + $("#pegLeft").outerHeight(t‌​rue)-discPosDif;
+		discPosDif=discPosDif+discHeight;
 	}
 }
 
