@@ -61,7 +61,7 @@ function discSubmit(inp) {
 
 function loadPage() {
 	$( "#discSubmit" ).click(function() {
-		discSubmit($( "#numDiscs" ).val());
+		discSubmit(numDiscs = $( "#numDiscs" ).val(););
 	});
 	initiateGame();
 }
