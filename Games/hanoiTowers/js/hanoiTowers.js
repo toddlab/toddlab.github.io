@@ -43,7 +43,7 @@ function initiateGame(){
 function determineDefaultDiscPositions(num, discHeight) {
 	var discPosDif = 0;
 	for (a = 1; a < (num+1); a++) {
-		discPos[a] = pegHeight - discPosDif + (discHeight/2) - 2;
+		discPos[a] = pegHeight - discPosDif + (discHeight/2) + 1;
 		discPosDif=discPosDif+discHeight;
 	}
 }
