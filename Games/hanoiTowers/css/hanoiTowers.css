@@ -43,6 +43,7 @@
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	background-size: cover;
+	position: relative;
 }
 
 .pegBase {
