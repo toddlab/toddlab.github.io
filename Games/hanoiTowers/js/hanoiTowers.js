@@ -2,7 +2,7 @@ var numDiscs = 5;
 var discs = [];
 var discHeight = 0;
 var discPos = [];
-var pegHeight = $("#pegLeft").outerHeight();
+var pegHeight = 0;
 
 function createDiscs (id, width) {
 	this.width = width || "";
@@ -21,6 +21,7 @@ function createCSS(newCss) {
 
 function initiateGame(){
 	discs.length = 0;
+	pegHeight = $("#pegLeft").outerHeight();
 	var discWidth = $( "#pegLeft" ).outerWidth(true) * .95;
 	var discWidthDif = discWidth / numDiscs;
 	var discHeight = ((pegHeight)/numDiscs)*.9;
