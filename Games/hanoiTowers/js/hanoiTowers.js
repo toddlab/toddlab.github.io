@@ -1,6 +1,6 @@
 var numDiscs = 5;
 var discs = [];
-var discHeight = ;
+var discHeight = 0;
 var discPos = [];
 
 function createDiscs (id, width) {
