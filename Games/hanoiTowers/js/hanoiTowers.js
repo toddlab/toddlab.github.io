@@ -55,13 +55,13 @@ function animateCreateDisc(id) {
 
 function discSubmit(inp) {
 	$( ".disc" ).remove();
-	numDiscs = inp;
+	numDiscs = parseInt(inp);
 	initiateGame();
 }
 
 function loadPage() {
 	$( "#discSubmit" ).click(function() {
-		discSubmit(numDiscs = $( "#numDiscs" ).val(););
+		discSubmit($( "#numDiscs" ).val());
 	});
 	initiateGame();
 }
