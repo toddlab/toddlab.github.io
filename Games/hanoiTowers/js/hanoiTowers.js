@@ -1,5 +1,6 @@
 var numDiscs = 5;
 var discs = [];
+var discHeight = 0;
 
 function createDiscs (id, width, top, left) {
 	this.width = width || "";
@@ -22,7 +23,7 @@ function initiateGame(){
 	var pegHeight = $("#pegLeft").outerHeight();
 	var discWidth = $( "#pegLeft" ).outerWidth(true) * .95;
 	var discWidthDif = discWidth / numDiscs;
-	var discHeight = ((pegHeight)/numDiscs)*.9;
+	discHeight = ((pegHeight)/numDiscs)*.9;
 	var discPosDif = discHeight;
 	for (a = 1; a < (numDiscs+1); a++) {
 		discs[a] = new createDiscs(a, discWidth, (pegHeight - discPosDif), (discWidth/2-15));
@@ -32,16 +33,15 @@ function initiateGame(){
 		}).css({
 			"width" : discs[a].width+"px",
 			"height" : discHeight+"px",
-			"top" : discs[a].top+"px",
 			"left" : "-"+discs[a].left+"px",
-		}).appendTo( "#pegLeft" );
+		}).appendTo( "#pegLeft" ).animate({top:-discHeight+"px"},1000,function () {
+        	$(this).css({
+            	top: discs[a].top+"px",
+			})
+		);
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
-}
-
-function animateCreateDisc(id) {
-
 }
 
 
@@ -58,9 +58,36 @@ function loadPage() {
 	initiateGame();
 }
 
-function moveDisc() {
-
+function selectDisc () {
+	
 }
+
+function moveDisc(elm, peg) {
+	animateDiscUp(elm);
+	animateDiscDown(elm, peg);
+	elm.peg = peg;
+}
+
+function animateDiscUp (elm) {
+	var topPeg = $('#pegWrapper').position().top - discHeight;
+	var discPos = $(elm).position().top;
+    $(elm).animate({top:discPos},1000,function () {
+        $(elm).css({
+            bottom: topPeg,
+            top: 'auto',
+	});
+}
+
+function animateDiscDown (elm, peg) {
+	var topPeg = -discHeight;
+	var discPos = $(elm).top;
+    $(elm).animate({top:topPeg},1000,function () {
+        $(elm).css({
+            top: discPos,
+	});
+}
+
+
 
 function checkWinner(){
 
