@@ -38,7 +38,7 @@ function initiateGame(){
         	$(this).css({
             	top: discs[a].top+"px",
 			})
-		);
+		});
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
