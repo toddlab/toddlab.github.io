@@ -44,7 +44,6 @@ function initiateGame(){
 		}).appendTo( "#pegLeft" ).animate({
 			"top" : discs[a].top+"px",
 		},1000);
-		$.wait(1000);
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
@@ -68,6 +67,16 @@ function selectDisc () {
 	
 }
 
+$(".peg").hover(
+	var elm = $(".peg").first;
+	function () {
+		$(elm).addClass('discHighlighted');
+	}, 
+	function () {
+		$(elm).removeClass('discHighlighted');
+	}
+);
+
 function moveDisc(elm, peg) {
 	animateDiscUp(elm);
 	animateDiscDown(elm, peg);
@@ -77,22 +86,16 @@ function moveDisc(elm, peg) {
 function animateDiscUp (elm) {
 	var topPeg = $('#pegWrapper').position().top - discHeight;
 	var discPos = $(elm).position().top;
-    $(elm).animate({top:discPos},1000,function () {
-        $(elm).css({
-            "bottom" : topPeg,
-        	"top" : 'auto',
-		});
-	});
+    $(elm).slideUp(500);
 }
 
 function animateDiscDown (elm, peg) {
 	var topPeg = -discHeight;
 	var discPos = $(elm).top;
-    $(elm).animate({top:topPeg},1000,function () {
-        $(elm).css({
-            "top" : discPos,
-		});
-	});
+	$(elm).css({
+
+	}).appendTo(peg);
+    $(elm).slideDown(500);
 }
 
 function checkWinner(){
