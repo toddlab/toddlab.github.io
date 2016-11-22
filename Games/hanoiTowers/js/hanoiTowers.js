@@ -74,9 +74,9 @@ function animateDiscUp (elm) {
     $(elm).animate({top:discPos},1000,function () {
         $(elm).css({
             bottom: topPeg,
-            top: 'auto',
+        	top: 'auto',
 		});
-	})
+	});
 }
 
 function animateDiscDown (elm, peg) {
@@ -85,10 +85,9 @@ function animateDiscDown (elm, peg) {
     $(elm).animate({top:topPeg},1000,function () {
         $(elm).css({
             top: discPos,
+		});
 	});
 }
-
-
 
 function checkWinner(){
 
