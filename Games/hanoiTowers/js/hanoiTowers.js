@@ -2,6 +2,12 @@ var numDiscs = 5;
 var discs = [];
 var discHeight = 0;
 
+$.wait = function(ms) {
+    var defer = $.Deferred();
+    setTimeout(function() { defer.resolve(); }, ms);
+    return defer;
+};
+
 function createDiscs (id, width, top, left) {
 	this.width = width || "";
 	this.peg = "left";
@@ -37,7 +43,8 @@ function initiateGame(){
 			"top" : "-100px",
 		}).appendTo( "#pegLeft" ).animate({
 			"top" : discs[a].top+"px",
-		},1000).delay(1000);
+		},1000);
+		$.wait(1000);
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
