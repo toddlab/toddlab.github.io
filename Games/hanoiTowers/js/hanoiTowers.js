@@ -36,7 +36,7 @@ function initiateGame(){
 			"left" : "-"+discs[a].left+"px",
 			"top" : "-100px",
 		}).appendTo( "#pegLeft" ).animate({
-			"top" : disc[a].top+"px",
+			"top" : discs[a].top+"px",
 		},1000);
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
