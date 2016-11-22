@@ -34,11 +34,10 @@ function initiateGame(){
 			"width" : discs[a].width+"px",
 			"height" : discHeight+"px",
 			"left" : "-"+discs[a].left+"px",
-		}).appendTo( "#pegLeft" ).animate({top:"-"+discHeight+"px"},1000,function () {
-        	$(this).css({
-            	"top" : discs[a].top+"px",
-			})
-		});
+			"top" : "-100px",
+		}).appendTo( "#pegLeft" ).animate({
+			"top" : disc[a].top+"px",
+		},1000);
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
