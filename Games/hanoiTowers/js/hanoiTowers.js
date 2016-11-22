@@ -75,7 +75,8 @@ function animateDiscUp (elm) {
         $(elm).css({
             bottom: topPeg,
             top: 'auto',
-	});
+		});
+	})
 }
 
 function animateDiscDown (elm, peg) {
