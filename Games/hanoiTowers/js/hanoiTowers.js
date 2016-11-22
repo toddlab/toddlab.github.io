@@ -34,9 +34,9 @@ function initiateGame(){
 			"width" : discs[a].width+"px",
 			"height" : discHeight+"px",
 			"left" : "-"+discs[a].left+"px",
-		}).appendTo( "#pegLeft" ).animate({top:-discHeight+"px"},1000,function () {
+		}).appendTo( "#pegLeft" ).animate({top:"-"+discHeight+"px"},1000,function () {
         	$(this).css({
-            	top: discs[a].top+"px",
+            	"top" : discs[a].top+"px",
 			})
 		});
 		discWidth = discWidth - discWidthDif;
@@ -73,8 +73,8 @@ function animateDiscUp (elm) {
 	var discPos = $(elm).position().top;
     $(elm).animate({top:discPos},1000,function () {
         $(elm).css({
-            bottom: topPeg,
-        	top: 'auto',
+            "bottom" : topPeg,
+        	"top" : 'auto',
 		});
 	});
 }
@@ -84,7 +84,7 @@ function animateDiscDown (elm, peg) {
 	var discPos = $(elm).top;
     $(elm).animate({top:topPeg},1000,function () {
         $(elm).css({
-            top: discPos,
+            "top" : discPos,
 		});
 	});
 }
