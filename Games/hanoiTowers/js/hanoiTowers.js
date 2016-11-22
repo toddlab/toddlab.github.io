@@ -68,12 +68,15 @@ function selectDisc () {
 }
 
 $(".peg").hover(
-	var elm = $(".peg").first;
 	function () {
-		$(elm).addClass('discHighlighted');
+		if($(this).first()) {
+			$(this).first().addClass('discHighlighted');
+		}
 	}, 
 	function () {
-		$(elm).removeClass('discHighlighted');
+		if($(this).first()) {
+			$(this).first().removeClass('discHighlighted');
+		}
 	}
 );
 
