@@ -1,12 +1,11 @@
 var numDiscs = 5;
+var numMoves = 0;
 var discs = [];
 var discHeight = 0;
-
-$.wait = function(ms) {
-    var defer = $.Deferred();
-    setTimeout(function() { defer.resolve(); }, ms);
-    return defer;
-};
+var clickEventType = detectmob()? 'touchstart':'click';
+var discSelected = false;
+var selectedDisc = '';
+var selectedPeg = '';
 
 function createDiscs (id, width, top, left) {
 	this.width = width || "";
@@ -43,10 +42,13 @@ function initiateGame(){
 			"top" : "-100px",
 		}).appendTo( "#pegLeft" ).animate({
 			"top" : discs[a].top+"px",
-		},1000);
+		},1000)
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
+	$("#pegLeftWrapper").on(clickEventType,function(e) {pegClickEvent(e);}).hover(hoverIn,hoverOut);
+	$("#pegMiddleWrapper").on(clickEventType,function(e) {pegClickEvent(e);}).hover(hoverIn,hoverOut);
+	$("#pegRightWrapper").on(clickEventType,function(e) {pegClickEvent(e);}).hover(hoverIn,hoverOut);
 }
 
 
@@ -63,28 +65,76 @@ function loadPage() {
 	initiateGame();
 }
 
-function selectDisc () {
-	
-}
-
-$(".peg").hover(
-	function () {
-		if($(this).first()) {
-			$(this).first().addClass('discHighlighted');
+function pegClickEvent(e) {
+	var elm = $(e.currentTarget).find(".peg");
+	var peg = $(elm).attr('id');
+	var disc = $('#'+peg+' .disc').last();
+	if (discSelected){
+		if (peg != selectedPeg) {
+			moveDisc(elm);
 		}
-	}, 
-	function () {
-		if($(this).first()) {
-			$(this).first().removeClass('discHighlighted');
-		}
+		unhighlightDisc(selectedDisc); 
+		selectedPeg = '';
+		selectedDisc = '';
+		discSelected = false;
+		$(".peg").removeClass('pegHighlighted');
+	} else if (disc.length) {
+		discSelected = true;
+		selectedPeg = peg;
+		selectedDisc = disc;
 	}
-);
-
-function moveDisc(elm, peg) {
-	animateDiscUp(elm);
-	animateDiscDown(elm, peg);
-	elm.peg = peg;
 }
+
+function hoverIn(e){
+	var elm = $(e.currentTarget).find(".peg");
+	var peg = $(elm).attr('id');
+	var disc = $('#'+peg+' .disc').last();
+	if (discSelected) {
+		if (peg != selectedPeg){
+			$(".peg").removeClass('pegHighlighted');
+			highlightPeg(elm);
+		}
+	} else {
+		highlightDisc(disc);
+	}
+}
+
+function hoverOut(e){
+	var elm = $(e.currentTarget).find(".peg");
+	var peg = $(elm).attr('id');
+	var disc = $('#'+peg+' .disc').last();
+	if (discSelected == false) {
+		unhighlightDisc(disc);
+	}
+}
+
+function highlightPeg(e) {
+	$(e).addClass('pegHighlighted');
+}
+
+function unhighlightPeg(e) {
+	$(e).removeClass('pegHighlighted');
+}
+
+function highlightDisc(e) {
+	$(e).addClass('discHighlighted');
+}
+
+function unhighlightDisc(e) {
+	$(e).removeClass('discHighlighted');
+}
+
+function moveDisc(peg) {
+	numMoves++;
+	var elm = $(selectedDisc).detach();
+	$(peg).append(elm);
+	var win = checkWinner();
+	if (win){
+		alert("You Win!");
+	}
+}
+
+
 
 function animateDiscUp (elm) {
 	var topPeg = $('#pegWrapper').position().top - discHeight;
@@ -104,3 +154,21 @@ function animateDiscDown (elm, peg) {
 function checkWinner(){
 
 }
+
+
+
+function detectmob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
+};
