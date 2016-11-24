@@ -28,12 +28,11 @@
     margin-top: 50px;
 }
 
-
 .pegWrapper {
 	padding-top: 30px;
     display: flex;
+    width: 100%;
 }
-
 
 .peg {
 	height: 300px;
@@ -44,6 +43,7 @@
 	border-top-right-radius: 5px;
 	background-size: cover;
     position: relative;
+    pointer-events: none;
 }
 
 .pegBase {
@@ -60,6 +60,7 @@
     height: 10%;
     background-image: url('https://s-media-cache-ak0.pinimg.com/736x/55/a8/55/55a855cdfab18c9d74cb6c0850a493aa.jpg');
     position: absolute;
+    pointer-events: none;
 }
 
 .discHighlighted::after {
@@ -72,6 +73,18 @@
     bottom: 0;
     width: 100%;
     border-radius: 8px;
+}
+
+.pegHighlighted::after {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    border-radius: 5px;
 }
 
 #numDiscs {
