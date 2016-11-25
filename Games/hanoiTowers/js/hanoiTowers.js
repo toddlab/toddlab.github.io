@@ -1,48 +1,35 @@
 var numDiscs = 5;
 var numMoves = 0;
 var discs = [];
+var topPositions = [];
 var discHeight = 0;
 var clickEventType = detectmob()? 'touchstart':'click';
 var discSelected = false;
 var selectedDisc = '';
 var selectedPeg = '';
-
-function createDiscs (id, width, top, left) {
-	this.width = width || "";
-	this.peg = "left";
-	this.id = id || "";
-	this.top = top || "";
-	this.left = left || "";
-}
-
-function createCSS(newCss) {
-	var style = document.createElement('style');
-	style.type = 'text/css';
-	style.innerHTML = newCss;
-	document.getElementsByTagName('head')[0].appendChild(style);
-	document.getElementById('someElementId').className = 'cssClass';
-}
+var newDiscTopPos = 0;
 
 function initiateGame(){
-	discs.length = 0;
+	topPositions.length = 0;
 	var pegHeight = $("#pegLeft").outerHeight();
 	var discWidth = $( "#pegLeft" ).outerWidth(true) * .95;
 	var discWidthDif = discWidth / numDiscs;
 	discHeight = ((pegHeight)/numDiscs)*.9;
 	var discPosDif = discHeight;
 	for (a = 1; a < (numDiscs+1); a++) {
-		discs[a] = new createDiscs(a, discWidth, (pegHeight - discPosDif), (discWidth/2-15));
-		$( "<div/>", {
+		topPositions[a] = pegHeight - discPosDif;
+		var newDisc = $( "<div/>", {
   			"class": "disc",
- 			"id": "peg"+a,
+ 			"id": a,
 		}).css({
-			"width" : discs[a].width+"px",
+			"width" : discWidth+"px",
 			"height" : discHeight+"px",
-			"left" : "-"+discs[a].left+"px",
+			"left" : "-"+(discWidth/2-15)+"px",
 			"top" : "-100px",
-		}).appendTo( "#pegLeft" ).animate({
-			"top" : discs[a].top+"px",
-		},1000)
+			//"display" : "none",
+		});
+		moveDiscCorrectly(newDisc, $("#pegLeft"));
+		animateDiscDown(newDisc, topPositions[a]);
 		discWidth = discWidth - discWidthDif;
 		discPosDif = discPosDif + discHeight;
 	}
@@ -68,17 +55,20 @@ function loadPage() {
 function pegClickEvent(e) {
 	var elm = $(e.currentTarget).find(".peg");
 	var peg = $(elm).attr('id');
-	var disc = $('#'+peg+' .disc').last();
+	var disc = $("#"+peg+" .disc").first();
 	if (discSelected){
 		if (peg != selectedPeg) {
-			moveDisc(elm);
+			preMoveDisc(elm);
 		}
 		unhighlightDisc(selectedDisc); 
 		selectedPeg = '';
 		selectedDisc = '';
 		discSelected = false;
-		$(".peg").removeClass('pegHighlighted');
+		$(".peg").removeClass("pegHighlighted");
 	} else if (disc.length) {
+		if( $(disc).hasClass( "discHighlighted") == false) {
+			highlightDisc(disc);
+		}
 		discSelected = true;
 		selectedPeg = peg;
 		selectedDisc = disc;
@@ -88,7 +78,7 @@ function pegClickEvent(e) {
 function hoverIn(e){
 	var elm = $(e.currentTarget).find(".peg");
 	var peg = $(elm).attr('id');
-	var disc = $('#'+peg+' .disc').last();
+	var disc = $('#'+peg+' .disc').first();
 	if (discSelected) {
 		if (peg != selectedPeg){
 			$(".peg").removeClass('pegHighlighted');
@@ -102,7 +92,7 @@ function hoverIn(e){
 function hoverOut(e){
 	var elm = $(e.currentTarget).find(".peg");
 	var peg = $(elm).attr('id');
-	var disc = $('#'+peg+' .disc').last();
+	var disc = $('#'+peg+' .disc').first();
 	if (discSelected == false) {
 		unhighlightDisc(disc);
 	}
@@ -124,38 +114,78 @@ function unhighlightDisc(e) {
 	$(e).removeClass('discHighlighted');
 }
 
-function moveDisc(peg) {
-	numMoves++;
-	var elm = $(selectedDisc).detach();
-	$(peg).append(elm);
-	var win = checkWinner();
-	if (win){
-		alert("You Win!");
+function preMoveDisc(peg) {
+	var elm = $(selectedDisc);
+	var pegDiscs = $(peg).find(' .disc');
+	//Check to see if discs already exist
+	if (pegDiscs.length > 0) {
+		var firstPegID = pegDiscs.first().attr('id');
+		newDiscTopPos = topPositions[pegDiscs.length+1];
+		//Check correct size of discs
+		if (elm.attr('id') > firstPegID) {
+			runAnimatations(elm, peg, newDiscTopPos);
+			numMoves++;
+		} else {
+			illegalMove();
+		}
+	} else {
+		newDiscTopPos = topPositions[1];
+		runAnimatations(elm, peg, newDiscTopPos);
+		numMoves++;
+	}
+	// Check to see if won
+	if (checkWinner()){
+		if (confirm('You Won!!  Would you like to play again?')) {
+    		// Play again
+    		discSubmit(numDiscs);
+		} else {
+			// No more fun
+		}
 	}
 }
 
-
-
-function animateDiscUp (elm) {
-	var topPeg = $('#pegWrapper').position().top - discHeight;
-	var discPos = $(elm).position().top;
-    $(elm).slideUp(500);
+function moveDiscCorrectly(elm, peg) {
+	elm.detach();
+	if ($(peg).find(".disc").length > 0) {
+		$(elm).insertBefore($(peg).find(".disc").first());
+	} else {
+		$(elm).appendTo($(peg));
+	}
 }
 
-function animateDiscDown (elm, peg) {
-	var topPeg = -discHeight;
-	var discPos = $(elm).top;
-	$(elm).css({
+function animateDiscUp(elm) {
+	$(elm).animate({"top" : "-60px"},500);
+	$(elm).animate({"display" : "none"},100);
+}
 
-	}).appendTo(peg);
-    $(elm).slideDown(500);
+function animateDiscDown (elm, topPos) {
+	$(elm).animate({"display" : "block"},100);	
+	$(elm).animate({"top" : topPos+"px"},500);
+}
+
+function runAnimatations(elm, peg, topPos) {
+	animateDiscUp(elm);
+	setTimeout(function(){
+		moveDiscCorrectly(elm, peg);
+		animateDiscDown(elm, topPos);
+	},600); 
+}
+
+function illegalMove(){
+	var leftPos = $(selectedDisc).position().left;
+	$(selectedDisc).animate({"left": leftPos-10+"px"},100);
+	$(selectedDisc).animate({"left": leftPos+10+"px"},100);
+	$(selectedDisc).animate({"left": leftPos-10+"px"},100);
+	$(selectedDisc).animate({"left": leftPos+"px"},100);
 }
 
 function checkWinner(){
-
+	if ($("#pegRight").find(".disc").length == numDiscs) {
+		return true;
+	} else {
+		return false;
+	} 
 }
-
-
 
 function detectmob() { 
  if( navigator.userAgent.match(/Android/i)
