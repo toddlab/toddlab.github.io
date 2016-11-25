@@ -134,14 +134,16 @@ function preMoveDisc(peg) {
 		numMoves++;
 	}
 	// Check to see if won
-	if (checkWinner()){
-		if (confirm('You Won in '+numMoves+' moves!!  Would you like to play again?')) {
-    		// Play again
-    		discSubmit(numDiscs);
-		} else {
+	setTimeout(function(){
+		if (checkWinner()){
+			if (confirm('You Won in '+numMoves+' moves!!  Would you like to play again?')) {
+    			// Play again
+    			discSubmit(numDiscs);
+			} else {
 			// No more fun
+			}
 		}
-	}
+	},1800)
 }
 
 function moveDiscCorrectly(elm, peg) {
@@ -154,13 +156,14 @@ function moveDiscCorrectly(elm, peg) {
 }
 
 function animateDiscUp(elm) {
-	$(elm).animate({"top" : "-60px"},500);
+	$(elm).animate({"top" : "-60px"},400);
 	$(elm).animate({"display" : "none"},100);
 }
 
 function animateDiscDown (elm, topPos) {
 	$(elm).animate({"display" : "block"},100);	
-	$(elm).animate({"top" : topPos+"px"},500);
+	$(elm).animate({"top" : topPos+"px"},400);
+	unhighlightDisc(elm);
 }
 
 function runAnimatations(elm, peg, topPos) {
@@ -168,7 +171,7 @@ function runAnimatations(elm, peg, topPos) {
 	setTimeout(function(){
 		moveDiscCorrectly(elm, peg);
 		animateDiscDown(elm, topPos);
-	},600); 
+	},550); 
 }
 
 function illegalMove(){
