@@ -56,11 +56,12 @@
 }
 
 .disc {
-    border-radius: 15px;
+    border-radius: 8px;
     height: 10%;
     background-image: url('https://s-media-cache-ak0.pinimg.com/736x/55/a8/55/55a855cdfab18c9d74cb6c0850a493aa.jpg');
     position: absolute;
     pointer-events: none;
+    z-index: 4;
 }
 
 .discHighlighted::after {
