@@ -135,7 +135,7 @@ function preMoveDisc(peg) {
 	}
 	// Check to see if won
 	if (checkWinner()){
-		if (confirm('You Won!!  Would you like to play again?')) {
+		if (confirm('You Won in '+numMoves+' moves!!  Would you like to play again?')) {
     		// Play again
     		discSubmit(numDiscs);
 		} else {
